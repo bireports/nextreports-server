@@ -14,7 +14,7 @@
         <dependency org="ro.nextreports" name="nextreports-engine" rev="${app.version}" changing="true"/>
 
         <!-- Logging -->
-        <dependency org="org.slf4j" name="slf4j-log4j12" rev="1.6.1"/>
+        <dependency org="org.slf4j" name="slf4j-log4j12" rev="1.7.25"/>
 
         <!-- Apache Commons -->
         <dependency org="commons-configuration" name="commons-configuration" rev="1.7"/>
@@ -34,10 +34,15 @@
         <dependency org="org.springframework.security" name="spring-security-config" rev="${spring-security.version}"/>
         <dependency org="org.springframework.security" name="spring-security-acl" rev="${spring-security.version}"/>
         <dependency org="org.springframework.security" name="spring-security-cas-client" rev="${spring-security.version}"/>
+        <dependency org="com.thoughtworks.xstream" name="xstream" rev="1.4.11-java7" conf="runtime"/>
 
         <!-- The JCR API -->
         <dependency org="javax.jcr" name="jcr" rev="2.0"/>
-
+        <!-- POI -->
+        <dependency org="org.apache.poi" name="poi" rev="3.15" />        
+        <dependency org="org.apache.poi" name="poi-ooxml" rev="3.15" >
+            <exclude org="xml-apis"/>
+        </dependency>
         <!-- Apache Jackrabbit -->
         <dependency org="org.apache.jackrabbit" name="jackrabbit-api" rev="${jackrabbit.version}"/>
         <dependency org="org.apache.jackrabbit" name="jackrabbit-core" rev="${jackrabbit.version}">
@@ -81,16 +86,20 @@
         -->
 
         <!-- Quartz Scheduler -->
-        <dependency org="org.quartz-scheduler" name="quartz" rev="2.2.0">
+        <dependency org="org.quartz-scheduler" name="quartz" rev="2.3.0">
             <exclude org="c3p0" module="c3p0"/>
         </dependency>
 
         <!-- JasperReports -->
-        <dependency org="net.sf.jasperreports" name="jasperreports" rev="5.1.0" >
+        <dependency org="org.olap4j" name="olap4j" rev="1.2.0"/>
+        <dependency org="net.sf.jasperreports" name="jasperreports" rev="5.1.2" >
             <!-- we have a itext-2.1.7 jar and jasperreports wants a itext-2.1.7.js2.jar that is not in maven central repository -->
             <exclude org="com.lowagie" module="itext"/>
+            <exclude org="org.olap4j" module="olap4j"/>
         </dependency>
-
+        <dependency org="com.lowagie" name="itext" rev="2.1.7" >
+            <exclude org="bouncycastle"/>
+        </dependency>
         <!-- Jcrom JCR ORM -->
         <dependency org="org.jcrom" name="jcrom" rev="${jcrom.version}">
             <exclude org="cglib" module="cglib"/>
@@ -109,16 +118,16 @@
         </dependency>
 
         <!-- Java Transaction -->
-        <dependency org="jta" name="jta" rev="1.0.1b"/>
+        <dependency org="javax.transaction" name="javax.transaction-api" rev="1.2"/>
 
         <!-- Sardine WebDav client (http://code.google.com/p/sardine/) -->
-        <dependency org="com.googlecode.sardine" name="sardine" rev="129"/>
+        <dependency org="com.googlecode.sardine" name="sardine" rev="146"/>
 
         <!-- FTP4j FTP client -->
-        <dependency org="it.sauronsoftware" name="ftp4j" rev="1.6"/>
+        <dependency org="org.bireports" name="ftp4j" rev="1.7.3"/>
 
         <!-- Wiquery -->
-        <dependency org="org.codehaus.jackson" name="jackson-mapper-asl" rev="1.9.4"/>
+        <dependency org="org.codehaus.jackson" name="jackson-mapper-asl" rev="1.9.13"/>
         <dependency org="org.odlabs.wiquery" name="wiquery-core" rev="${wiquery.version}"/>
         <dependency org="org.odlabs.wiquery" name="wiquery-jquery-ui" rev="${wiquery.version}"/>
 
@@ -128,35 +137,35 @@
         </dependency>
 
         <!-- JSch SSH client -->
-        <dependency org="com.jcraft" name="jsch" rev="0.1.50"/>
+        <dependency org="com.jcraft" name="jsch" rev="0.1.55"/>
 
         <!-- Jersey REST -->
-        <dependency org="com.sun.jersey" name="jersey-core" rev="1.18"/>
-        <dependency org="com.sun.jersey" name="jersey-server" rev="1.18"/>
-        <dependency org="com.sun.jersey" name="jersey-client" rev="1.18"/>
-        <dependency org="com.sun.jersey" name="jersey-servlet" rev="1.18"/>
+        <dependency org="com.sun.jersey" name="jersey-core" rev="1.19.4"/>
+        <dependency org="com.sun.jersey" name="jersey-server" rev="1.19.4"/>
+        <dependency org="com.sun.jersey" name="jersey-client" rev="1.19.4"/>
+        <dependency org="com.sun.jersey" name="jersey-servlet" rev="1.19.4"/>
         <!-- added for /api 9.3 SNAPSHOT -->
-        <dependency org="com.sun.jersey" name="jersey-json" rev="1.18"/>
-        <dependency org="com.sun.jersey.contribs" name="jersey-spring" rev="1.18"/>
+        <dependency org="com.sun.jersey" name="jersey-json" rev="1.19.4"/>
+        <dependency org="com.sun.jersey.contribs" name="jersey-spring" rev="1.19.4"/>
 
         <!-- Ehcache -->
-        <dependency org="net.sf.ehcache" name="ehcache-core" rev="2.2.0"/>
+        <dependency org="net.sf.ehcache" name="ehcache-core" rev="2.6.11"/>
 
         <!-- DataSource pooling -->
-        <dependency org="com.mchange" name="c3p0" rev="0.9.2.1"/>
+        <dependency org="com.mchange" name="c3p0" rev="0.9.5.2"/>
 
         <!-- Gson json (http://code.google.com/p/google-gson/) -->
-        <dependency org="com.google.code.gson" name="gson" rev="1.4"/>
+        <dependency org="com.google.code.gson" name="gson" rev="2.8.5"/>
 
         <!-- jMimeMagic -->
-        <dependency org="jmimemagic" name="jmimemagic" rev="0.1.2"/>
+        <dependency org="net.sf.jmimemagic" name="jmimemagic" rev="0.1.5"/>
 
         <!-- Java Mail -->
-        <dependency org="com.sun.mail" name="javax.mail" rev="1.5.2"/>
+        <dependency org="com.sun.mail" name="javax.mail" rev="1.6.2"/>
 
         <!-- AspectJ -->
-        <dependency org="org.aspectj" name="aspectjrt" rev="1.7.4"/>
-        <dependency org="org.aspectj" name="aspectjweaver" rev="1.7.4"/>
+        <dependency org="org.aspectj" name="aspectjrt" rev="1.9.2"/>
+        <dependency org="org.aspectj" name="aspectjweaver" rev="1.9.2"/>
 
         <!-- Astea nu stiu de ce trebuie -->
         <dependency org="org.jboss.spec.javax.annotation" name="jboss-annotations-api_1.1_spec" rev="1.0.0.Final"/>
@@ -166,13 +175,14 @@
         <dependency org="org.jasypt" name="jasypt-spring3" rev="1.9.0"/>
 
         <!-- Force resolve a specific derby jdbc driver -->
-        <dependency org="org.apache.derby" name="derby" rev="10.10.1.1"/>
+        <dependency org="org.apache.derby" name="derby" rev="10.13.1.1"/>
 
         <!-- OrientDb -->
-        <dependency org="com.orientechnologies" name="orientdb-jdbc" rev="2.0"/>
+        <dependency org="com.orientechnologies" name="orientdb-jdbc" rev="2.2.36"/>
         
-        <!-- Licence -->
+        <!-- Licence 
         <dependency org="licence" name="licence-validator" rev="0.0.1"/>
+        -->
     </dependencies>
 
 </ivy-module>

@@ -22,9 +22,9 @@ import java.io.InputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import licence.nextserver.LicenceException;
-import licence.nextserver.LicenseLoader;
-import licence.nextserver.NextServerLicense;
+// import licence.nextserver.LicenceException;
+// import licence.nextserver.LicenseLoader;
+// import licence.nextserver.NextServerLicense;
 
 public class NextServerModuleLicence implements ModuleLicence {
 	
@@ -43,7 +43,7 @@ public class NextServerModuleLicence implements ModuleLicence {
 			LOG.info("* Licence " + moduleName + " : found");
 		}
 				
-		try {			
+		/*try {			
 			NextServerLicense licence = LicenseLoader.decodeLicence(f);						
 			if (licence.isValid() && moduleName.equals(licence.getPCODE())) {
 				LOG.info("  Valid licence for " +  moduleName + " module.");
@@ -70,8 +70,8 @@ public class NextServerModuleLicence implements ModuleLicence {
 			} catch (LicenceException ex) {			
 				LOG.info("  Invalid licence for " +  moduleName + " module.");
 			}
-		}		
-		return false;
+		}	*/	
+		return true;
 	}
 
 }

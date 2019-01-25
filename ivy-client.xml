@@ -19,8 +19,8 @@
     
     <dependencies>    
         <!-- Jersey REST -->
-        <dependency org="com.sun.jersey" name="jersey-core" rev="1.7"/>
-        <dependency org="com.sun.jersey" name="jersey-client" rev="1.7"/>
+        <dependency org="com.sun.jersey" name="jersey-core" rev="1.19.4"/>
+        <dependency org="com.sun.jersey" name="jersey-client" rev="1.19.4"/>
         
         <!-- XStream (used already by engine) -->
         <!--
